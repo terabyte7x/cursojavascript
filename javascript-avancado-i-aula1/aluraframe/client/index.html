@@ -5,7 +5,11 @@
     <title>Negociações</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
-    
+    <noscript>
+        Para completa funcionalidade deste site é necessário habilitar o JavaScript.
+        Aqui estão as <a href="https://www.enable-javascript.com/pt/">
+        instruções de como habilitar o JavaScript no seu navegador</a>.
+       </noscript>
 </head>
 <body class="container">
     
@@ -34,7 +38,7 @@
     </form>
     
     <div class="text-center">
-        <button class="btn btn-primary text-center" type="button">
+        <button class="btn btn-primary text-center" type="button" onclick="negociacaoController.importaNegociacoes()">
             Importar Negociações
         </button>
         <button class="btn btn-primary text-center" type="button" onclick="negociacaoController.apaga()">
@@ -56,7 +60,7 @@
     <script src="js/lib/app/view/MensagemView.js"></script>
     <script src="js/lib/app/services/ProxyFactory.js"></script>
     <script src="js/lib/app/helpers/Bind.js"></script>
-    
+    <script src="js/lib/app/services/NegociacaoService.js"></script>
     
     <script>
         
