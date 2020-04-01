@@ -1,4 +1,4 @@
-class NegociacaoController{
+class NegociacaoController {
 
     constructor() {
 
@@ -9,10 +9,10 @@ class NegociacaoController{
 
         this._negociacoesView = new NegociacoesView($('#negociacoesView'));
 
-        this._listaNegociacoes = new Bind (
-                new ListaNegociacoes(),
-                this._negociacoesView,
-                ['adiciona', 'esvazia']);
+        this._listaNegociacoes = new Bind(
+            new ListaNegociacoes(),
+            this._negociacoesView,
+            ['adiciona', 'esvazia']);
 
 
         this._mensagemView = new MensagemView($('#mensagemView'));
@@ -23,7 +23,7 @@ class NegociacaoController{
     }
 
 
-    adiciona(event){
+    adiciona(event) {
 
         event.preventDefault();
 
@@ -34,22 +34,59 @@ class NegociacaoController{
         this._mensagem.texto = 'Negociação adicionada com sucesso!';
         this._mensagemView.update(this._mensagem);
         this._limpaformulario();
-        
+
         console.log(this._listaNegociacoes.negociacoes);
 
     }
 
     importaNegociacoes() {
 
-        let Service = new NegociacaoService();
+        let service = new NegociacaoService();
+
+
+        // let promise = service.obterNegociacoesDaSemana();
+        // promise
+        //     .then(negociacoes => {
+        //         negociacoes
+        //             .forEach(negociacao => this._listaNegociacoes.adiciona(negociacao))
+        //         this._mensagem.texto = 'Negociações da semana obtida com sucesso';
+        //     })
+        //     .catch(erro => this._mensagem.texto = erro);
+
+
+
+        // //Pyramid of doom
+        // //Callback Hell
 
         Service.obterNegociacoesDaSemana((erro, negociacoes) => { //Erro first strategy
-            if(erro){
+            if (erro) {
                 this._mensagem.texto = erro;
                 return;
             }
 
             negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+
+            Service.obterNegociacoesDaSemanaPassada((erro, negociacoes) => { //Erro first strategy
+                if (erro) {
+                    this._mensagem.texto = erro;
+                    return;
+                }
+
+                negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+
+                Service.obterNegociacoesDaSemanaRetrasada((erro, negociacoes) => { //Erro first strategy
+                    if (erro) {
+                        this._mensagem.texto = erro;
+                        return;
+                    }
+
+                    negociacoes.forEach(negociacao => this._listaNegociacoes.adiciona(negociacao));
+                    this._mensagem.texto = 'Negociações importadas com suceso!';
+                    this._mensagemView.update(this._mensagem);
+
+                });
+            });
+
             this._mensagem.texto = 'Negociações importadas com suceso!';
             this._mensagemView.update(this._mensagem);
 
@@ -66,7 +103,7 @@ class NegociacaoController{
 
     }
 
-    _criaNegociacao(){
+    _criaNegociacao() {
 
         return new Negociacao(
             DateHelper.textoParaData(this._inputData.value),
@@ -76,14 +113,14 @@ class NegociacaoController{
 
     }
 
-    _limpaformulario(){
+    _limpaformulario() {
         this._inputData.value = '';
         this._inputQuantidade.value = 1;
         this._inputValor.value = 0.0;
 
         this._inputData.focus();
-        
-    
+
+
     }
 
 }
