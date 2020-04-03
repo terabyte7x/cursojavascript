@@ -9,8 +9,8 @@
  */
 
 var ConnectionFactory = (function() {
-  const stores = ["negociacoes"];
-  const version = 13;
+  const store = ["negociacoes"];
+  const version = 1;
   const dbName = "aluraframe";
   var connection = null;
   var close = null;
@@ -57,12 +57,13 @@ var ConnectionFactory = (function() {
     }
 
     static _createStores(connection) {
-      stores.forEach(stores => {
-        if (connection.objectStoreNames.contains(store))
-          connection.deleteObjectStore(store);
+
+      store.forEach(stores => {
+        if (connection.objectStoreNames.contains(store)){
+          connection.deleteObjectStore(store)} 
 
         connection.createObjectStore(store, { autoIncrement: true });
-      });
+        })
     }
     static closeConnection() {
       if (connection) {
