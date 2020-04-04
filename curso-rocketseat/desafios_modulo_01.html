@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafios do Módulo 01!</title>
+  </head>
+  <body>
+    <h3>Desafios do Módulo 01</h3>
+
+    <script>
+      //Desafio 01
+      var endereco = {
+        rua: "Rua dos pinheiros",
+        numero: 1293,
+        bairro: "Centro",
+        cidade: "São Paulo",
+        uf: "SP",
+      };
+
+      //O usuário mora em São Paulo / SP, no bairro Centro, na rua "Rua dos Pinheiros" com no 1293.
+      console.log(
+        `O usuário mora em ${endereco.cidade}/${endereco.uf},no bairro ${endereco.bairro}, na \"${endereco.rua}\" no número ${endereco.numero}.`
+      );
+
+      //Desafio 02
+
+      //Exercicio 2:
+
+      /** Pares: Para cada x = i, enquanto y for maior ou igual a x, soma + 1.
+       * Se o resto da divisão de x por 2 for 0, então é par, e pode printar.
+       * O x neste caso, é a variável inicializadora.
+       */
+      function pares(x, y) {
+        for (let i = x; i <= y; i++) {
+          if (i % 2 === 0) {
+            console.log(i);
+          }
+        }
+      }
+
+      // pares(32, 321)
+
+      //Desafio 03
+
+      function temHabilidade(skills) {
+        let boolean = skills.includes("Javascript");
+        console.log(boolean);
+      }
+
+      let skills = ["Javascript", "ReactJS", "React Native"];
+      temHabilidade(skills);
+
+      //Desafio 04
+
+      function experiencia(anos) {
+        if (anos >= 1 && anos < 0) console.log("Iniciante");
+        else if (anos > 1 && anos <= 3) console.log("Intermediário");
+        else if (anos > 3 && anos <= 6) console.log("Avançado");
+        else if (anos >= 7) console.log("Jedi Master");
+      }
+      var anosEstudo = 7;
+      experiencia(anosEstudo);
+      // De 0-1 ano: Iniciante
+      // De 1-3 anos: Intermediário // De 3-6 anos: Avançado
+      // De 7 acima: Jedi Master
+
+      //Desafio 05
+
+      var usuarios = [
+        {
+          nome: "Diego",
+          habilidades: ["Javascript", "ReactJS", "Redux"],
+        },
+        {
+          nome: "Gabriel",
+          habilidades: ["VueJS", "Ruby on Rails", "Elixir"],
+        },
+      ];
+
+      // Dica: Para percorrer um vetor você deve utilizar a sintaxe for...of e para unir valores de um array com um separador utilize o join.
+      // O Diego possui as habilidades: Javascript, ReactJS, Redux
+      // O Gabriel possui as habilidades: VueJS, Ruby on Rails, Elixir
+    </script>
+  </body>
+</html>

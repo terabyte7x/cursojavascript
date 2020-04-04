@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" name="nome" placeholder="Insira seu nome"></input> <br/>
+    <button class="botao"> Adicionar </button>
+  </div>
+  <script>
+    // var inputElement = document.getElementById('nome');
+    // var inputElement = document.getElementsByTagName('input')[0]; //Retorna um vetor
+    // var inputElement = document.getElementsByClassName('nome'); //Retorna um vetor
+
+    // var inputElement = document.querySelector('body div#app input');
+    /** O query selector permite andar dentro da DOM (Árvore de elementos). No 
+    exemplo acima, pedimos ao querySelector por um elemento que está no body, 
+    na div com id(#) app, do tipo input. */
+
+    // var inputElement = document.querySelector('input[name=nome]');
+    //Defino o atributo/propriedade que quero acessar dentro do elemento.
+    
+    let inputElement = document.querySelector('input[name=nome]');
+    let btnElement = document.querySelector('button.botao');
+    btnElement.onclick = () => alert(` Olá, ${inputElement.value}! `);
+
+  </script>
+</body>
+</html>

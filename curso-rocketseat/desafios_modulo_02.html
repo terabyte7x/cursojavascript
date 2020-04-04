@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desafios do Módulo 02</title>
+  </head>
+  <body>
+    <h3>Desafios do Módulo 02</h3>
+    <div id="app">
+      <div class="box"></div>
+    </div>
+    <div class="list">
+      <ul id="lista"></ul>
+    </div>
+    <div class="insere">
+      <input type="text" name="campoNome" class="inputNome" />
+      <button onclick="addLista(campo.value)">Adicionar</button>
+    </div>
+
+    <script>
+      let box = document.querySelector(".box");
+      let campo = document.querySelector(".inputNome");
+
+      box.style.width = "190px";
+      box.style.height = "10px";
+      box.style.backgroundColor = getRandomColor();
+
+      function getRandomColor() {
+        var letters = "0123456789ABCDEF";
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+      var newColor = getRandomColor(); // #E943F0
+
+      //Desafio 02
+      var p = document.querySelector(".list");
+      var input = document.querySelector(".list");
+
+      var nomes = ["Diego", "Gabriel", "Lucas"];
+
+      nomes.forEach((nome) => {
+        addLista(nome);
+      });
+
+      function addLista(nome) {
+        var li = document.createElement("li");
+        li.innerHTML = nome;
+        p.appendChild(li);
+        campo.value = '';
+        box.style.backgroundColor = getRandomColor(); 
+      }
+    </script>
+  </body>
+</html>
